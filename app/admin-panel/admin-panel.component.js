@@ -11,10 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var games_service_1 = require("../games.service");
 var players_service_1 = require("../players.service");
+var common_1 = require("@angular/common");
 var AdminPanelComponent = (function () {
     function AdminPanelComponent(games, remote) {
         this.games = games;
         this.remote = remote;
+        this.minutes = 15;
     }
     AdminPanelComponent.prototype.ngOnInit = function () {
         this.games.updateForId('steamId');
@@ -46,10 +48,14 @@ var AdminPanelComponent = (function () {
     AdminPanelComponent.prototype.startSteam = function () {
         this.remote.startSteam();
     };
+    AdminPanelComponent.prototype.setTime = function (min) {
+        this.minutes = min;
+    };
     AdminPanelComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'app-admin-panel',
+            directives: [common_1.NgClass],
             templateUrl: 'admin-panel.component.html',
             styleUrls: ['admin-panel.component.css']
         }), 

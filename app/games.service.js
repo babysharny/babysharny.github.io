@@ -37,6 +37,8 @@ var GamesService = (function () {
             _this.right = obj.games
                 .map(function (x) {
                 x.selected = false;
+                x.logo_big = "http://cdn.akamai.steamstatic.com/steam/apps/" + x.appID + "/header.jpg";
+                x.logo = "this.src='" + x.logo + "'";
                 return x;
             });
             var grid = [];
