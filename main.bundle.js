@@ -10327,7 +10327,7 @@ var CalendarService = (function () {
         };
         var day = this.day;
         this.db.addNote(newNote, function (res) {
-            console.log(res);
+            // console.log(res);
             newNote['id'] = res.target.result;
             day.notes.push(newNote);
         });
@@ -10355,7 +10355,7 @@ var CalendarService = (function () {
         first.setDate((first.getDay() - 1) * (-1));
         var count = prevOffset + this.daysInMonth(month);
         var nextOffset = 7 - (count % 7);
-        console.log(prevOffset + " + " + this.daysInMonth(month) + " / 7 = " + nextOffset);
+        // console.log(`${prevOffset} + ${this.daysInMonth(month)} / 7 = ${nextOffset}`);
         count = (count % 7 === 0) ? count : count + nextOffset;
         var arr = [];
         for (var i = 0; i < count; i++) {
@@ -10385,7 +10385,6 @@ var CalendarService = (function () {
         });
         return days;
     };
-    // todo should be pure abstract function
     /**
      * daysInMonth
      * @param month
@@ -10395,8 +10394,6 @@ var CalendarService = (function () {
         var now = new Date(month);
         now.setMonth(now.getMonth() + 1);
         now.setDate(0);
-        console.log('day of month ', now.getDate());
-        console.log('day of month ', now);
         return now.getDate();
     };
     CalendarService = __decorate([
@@ -26114,7 +26111,7 @@ var DbService = (function () {
         };
     };
     DbService.prototype.handleError = function (err) {
-        console.log(err);
+        console.error('DataBase error! Use DeleteBase button and restart app', err);
     };
     DbService.prototype.connectDB = function (callback) {
         var _this = this;
@@ -26165,7 +26162,7 @@ var DbService = (function () {
             var request = db.transaction([_this.storeName], 'readwrite').objectStore(_this.storeName).delete(note.id);
             request.onerror = _this.handleError;
             request.onsuccess = function (res) {
-                console.log('File delete from DB:', res);
+                // console.log('Note delete from DB:', res, note);
                 callback(res);
             };
         });
@@ -26176,7 +26173,7 @@ var DbService = (function () {
             var request = db.transaction([_this.storeName], 'readwrite').objectStore(_this.storeName).add(note);
             request.onerror = _this.handleError;
             request.onsuccess = function (res) {
-                console.log('File delete from DB:', res);
+                // console.log('Note add to DB:', res, note);
                 callback(res);
             };
         });
