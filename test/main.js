@@ -3,7 +3,7 @@
 
         console.log('selectpicker is ready');
 
-        var countries = ['Country1', 'Country2'];
+        var countries = ['Country1', 'Country2', 'Country2'];
 
         countries.reverse();
 
